@@ -3,6 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col-12">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col-10">
             <h1>Reservations List</h1>
         </div>
@@ -26,7 +35,9 @@
                 <th scope="col">Employee ID</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
-                <th scope="col">Actions</th>
+                @can('isAdmin')
+                    <th scope="col">Actions</th>
+                @endcan
                 </tr>
             </thead>
             <tbody>
@@ -42,15 +53,17 @@
                         <td>{{$reservation->datetime}}</td>
                         <td>{{$reservation->status}}</td>
                         <td>
-                            <a href="{{ route('reservations.show', $reservation->id) }}">
-                                <button class="btn btn-success btn-sm">Show</button>
-                            </a>
-                            <a href="{{ route('reservations.edit', $reservation->id) }}">
-                                <button class="btn btn-info btn-sm">Edit</button>
-                            </a>
-                            <a href="{{ route('reservations.destroy', $reservation->id) }}">
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </a>
+                            @can('isAdmin')
+                                <a href="{{ route('reservations.show', $reservation->id) }}">
+                                    <button class="btn btn-success btn-sm">Show</button>
+                                </a>
+                                <a href="{{ route('reservations.edit', $reservation->id) }}">
+                                    <button class="btn btn-info btn-sm">Edit</button>
+                                </a>
+                                <a href="{{ route('reservations.destroy', $reservation->id) }}">
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </a>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

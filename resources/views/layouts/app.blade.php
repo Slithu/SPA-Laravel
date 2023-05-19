@@ -30,15 +30,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}">Users List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('employees.index') }}">Employees List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('treatments.index') }}">Treatments</a>
-                        </li>
+                        @can('isAdmin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">Users List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('employees.index') }}">Employees List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('treatments.index') }}">Treatments</a>
+                            </li>
+                        @endcan
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
                         </li>

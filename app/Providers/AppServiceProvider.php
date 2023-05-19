@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 //use Illuminate\Contracts\Pagination\Paginator;
+
+use App\Enums\UserRole;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 

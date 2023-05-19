@@ -25,7 +25,7 @@ class StoreTreatmentRequest extends FormRequest
             'name' => 'required|max:255',
             'typeId' => 'required',
             'description' => 'required|max:1500',
-            'duration' => 'required|date_format:H:i',
+            'duration' => 'required',
             'price' => 'required|numeric|between:0,9999.99',
             'image' => 'nullable|image'
         ];

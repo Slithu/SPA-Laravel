@@ -64,6 +64,6 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('users/list');
+        return redirect('users/list')->with('status', 'User deleted!');
     }
 }

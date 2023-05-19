@@ -39,7 +39,7 @@ class EmployeesController extends Controller
     {
         $employee = new Employees($request->validated());
         $employee->save();
-        return redirect(route('employees.index'));
+        return redirect(route('employees.index'))->with('status', 'Employee stored!');
     }
 
     /**
@@ -71,7 +71,7 @@ class EmployeesController extends Controller
     {
         $employees->fill($request->validated());
         $employees->save();
-        return redirect(route('employees.index'));
+        return redirect(route('employees.index'))->with('status', 'Employee updated!');
     }
 
     /**
@@ -81,6 +81,6 @@ class EmployeesController extends Controller
     {
         //$employee = Employees::find($employees);
         $employees->delete();
-        return redirect(route('employees.index'));
+        return redirect(route('employees.index'))->with('status', 'Employee deleted!');
     }
 }

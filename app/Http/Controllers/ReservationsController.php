@@ -45,7 +45,7 @@ class ReservationsController extends Controller
     {
         $reservation = new Reservations($request->validated());
         $reservation->save();
-        return redirect(route('reservations.index'));
+        return redirect(route('reservations.index'))->with('status', 'Reservation stored!');
     }
 
     /**
@@ -81,7 +81,7 @@ class ReservationsController extends Controller
     {
         $reservations->fill($request->validated());
         $reservations->save();
-        return redirect(route('reservations.index'));
+        return redirect(route('reservations.index'))->with('status', 'Reservation updated!');
     }
 
     /**
@@ -91,6 +91,6 @@ class ReservationsController extends Controller
     {
         //$reservations = Treatments::find($treatments);
         $reservations->delete();
-        return redirect(route('reservations.index'));
+        return redirect(route('reservations.index'))->with('status', 'Reservation deleted!');
     }
 }

@@ -44,7 +44,7 @@ class TreatmentsController extends Controller
             $treatment->image_path = Storage::disk('public')->put('treatments', $request->file('image'));
         }
         $treatment->save();
-        return redirect(route('treatments.index'));
+        return redirect(route('treatments.index'))->with('status', 'Treatment stored!');
     }
 
     /**
@@ -79,7 +79,7 @@ class TreatmentsController extends Controller
         $treatments->image_path = Storage::disk('public')->put('treatments', $request->file('image'));
         }
         $treatments->save();
-        return redirect(route('treatments.index'));
+        return redirect(route('treatments.index'))->with('status', 'Treatment updated!');
     }
 
     /**
@@ -89,6 +89,6 @@ class TreatmentsController extends Controller
     {
         //$treatment = Treatments::find($treatments);
         $treatments->delete();
-        return redirect(route('treatments.index'));
+        return redirect(route('treatments.index'))->with('status', 'Treatment deleted!');
     }
 }
