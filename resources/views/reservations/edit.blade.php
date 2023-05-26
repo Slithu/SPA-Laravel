@@ -31,6 +31,25 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="typeId" class="col-md-4 col-form-label text-md-end">Type ID</label>
+
+                            <div class="col-md-6">
+                                <select id="typeId" class="form-control @error('typeId') is-invalid @enderror" name="typeId" required>
+                                    <option value="{{ $reservation->types->id }}">{{ $reservation->types->name }}</option>
+                                    @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('typeId')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="treatmentId" class="col-md-4 col-form-label text-md-end">Treatment</label>
 
                             <div class="col-md-6">
@@ -87,8 +106,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" id="status" name="status" required>
-                                    <option value="confirmed">Confirmed</option>
-                                    <option value="cancelled">Cancelled</option>
+                                    <option value="confirmed" <?php if ($lastSelectedValue === 'confirmed') echo 'selected'; ?>>Confirmed</option>
+                                    <option value="cancelled" <?php if ($lastSelectedValue === 'cancelled') echo 'selected'; ?>>Cancelled</option>
                                 </select>
 
                                 @error('status')

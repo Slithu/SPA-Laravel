@@ -18,8 +18,9 @@ class Reservations extends Model
      */
     protected $fillable = [
         'userId',
-        'employeeId',
+        'typeId',
         'treatmentId',
+        'employeeId',
         'datetime',
         'status'
     ];
@@ -27,6 +28,11 @@ class Reservations extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, "userId");
+    }
+
+    public function types(): BelongsTo
+    {
+        return $this->belongsTo(Types::class, "typeId");
     }
 
     public function employees(): BelongsTo
@@ -41,7 +47,7 @@ class Reservations extends Model
 
     public function reservations(): HasMany
     {
-        return $this->hasMany(reservations::class);
+        return $this->hasMany(Reservations::class);
     }
 
     public function hasType(): bool

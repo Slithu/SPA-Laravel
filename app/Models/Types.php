@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Types extends Model
 {
@@ -15,6 +17,17 @@ class Types extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name'
+        'name',
+        'specializationId'
     ];
+
+    public function treatmets(): HasMany
+    {
+        return $this->hasMany(Treatments::class, 'typeId');
+    }
+
+    public function specializations(): BelongsTo
+    {
+        return $this->belongsTo(Specializations::class, "specializationId");
+    }
 }

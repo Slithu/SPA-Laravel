@@ -7,6 +7,7 @@ use App\Models\Types;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 
 class WelcomeController extends Controller

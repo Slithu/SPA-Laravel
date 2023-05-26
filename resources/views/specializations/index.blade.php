@@ -16,7 +16,7 @@
             <h1>Specializations List</h1>
         </div>
         <div class="col-6">
-            <a class="float-right" href=" {{ route('specializations.create') }} ">
+            <a style="float: right" href=" {{ route('specializations.create') }} ">
                 <button type="button" class="btn btn-primary">Create new Specialization</button>
             </a>
         </div>
@@ -37,13 +37,13 @@
                         <th scope="row">{{$specialization->id}}</th>
                         <td>{{$specialization->name}}</td>
                         <td>
-                            <a href="{{ route('employees.show', $employee->id) }}">
+                            <a href="{{ route('specializations.show', $specialization->id) }}">
                                 <button class="btn btn-success btn-sm">Show</button>
                             </a>
-                            <a href="{{ route('employees.edit', $employee->id) }}">
+                            <a href="{{ route('specializations.edit', $specialization->id) }}">
                                 <button class="btn btn-info btn-sm">Edit</button>
                             </a>
-                            <a href="{{ route('employees.destroy', $employee->id) }}">
+                            <a href="{{ route('specializations.destroy', $specialization->id) }}">
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </a>
                         </td>

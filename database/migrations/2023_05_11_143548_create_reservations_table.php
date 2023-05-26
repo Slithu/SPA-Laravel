@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('typeId');
             $table->unsignedBigInteger('treatmentId');
             $table->unsignedBigInteger('employeeId');
             $table->dateTime('datetime');
             $table->enum('status', array('confirmed', 'cancelled'));
             $table->timestamps();
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('typeId')->references('id')->on('types')->onDelete('cascade');
             $table->foreign('treatmentId')->references('id')->on('treatments')->onDelete('cascade');
             $table->foreign('employeeId')->references('id')->on('employees')->onDelete('cascade');
         });

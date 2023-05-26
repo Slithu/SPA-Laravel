@@ -11,21 +11,14 @@
             @endif
         </div>
     </div>
-    <div class="row">
-        <div class="col-10">
-            <h1>Reservations List</h1>
-        </div>
-        <div class="col-2">
-            <a class="float-right" href=" {{ route('reservations.create') }} ">
-                <button type="button" class="btn btn-primary">Create new Reservation</button>
-            </a>
-        </div>
-        @can('isUser')
-            <h4 style="text-align: center; margin-top: 5%">To reserve a SPA treatment, press the Create new Reservation button and enter the details of the treatment. You can see your reserved treatments in the My Reservations tab</h4>
-        @endcan
-    </div>
+    @if ($reservations->isEmpty())
+    <h1>Your Reservations</h1><br><br>
+        <h4 style="text-align: center">You don't have any reservations yet. If you want to reserve a treatment, go to the Reservations tab</h4>
+    @else
+    <h1>Your Reservations</h1>
     <br>
-    @can('isAdmin')
+    <h6 style="text-align: center">You can edit your reservations by clicking the edit button and changing the reservation details. If you want to cancel the reservation, click the edit button and change the status to "Cancelled"</h6>
+    <br><br>
     <div class="row">
         <table class="table table-striped table-hover">
             <thead>
@@ -40,7 +33,7 @@
                 <th scope="col">Employee ID</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
-                    <th scope="col">Actions</th>
+                <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,24 +50,18 @@
                         <td>{{$reservation->datetime}}</td>
                         <td>{{$reservation->status}}</td>
                         <td>
-                                <a href="{{ route('reservations.show', $reservation->id) }}">
-                                    <button class="btn btn-success btn-sm">Show</button>
-                                </a>
-                                <a href="{{ route('reservations.edit', $reservation->id) }}">
-                                    <button class="btn btn-info btn-sm">Edit</button>
-                                </a>
-                                <a href="{{ route('reservations.destroy', $reservation->id) }}">
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                </a>
+                            <a href="{{ route('reservations.show', $reservation->id) }}">
+                                <button class="btn btn-success btn-sm">Show</button>
+                            </a>
+                            <a href="{{ route('reservations.edit', $reservation->id) }}">
+                                <button class="btn btn-info btn-sm">Edit</button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    @endcan
-    <div class="position-absolute bottom-0 start-50 translate-middle-x">
-        {{$reservations->links()}}
-    </div>
+    @endif
 </div>
 @endsection

@@ -6,10 +6,14 @@ use App\Models\Reservations;
 use App\Models\Employees;
 use App\Models\Treatments;
 use App\Models\User;
+use App\Models\Types;
+use App\Models\Specializations;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Http\Requests\StoreReservationRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Enums\UserRole;
 
 class ReservationsController extends Controller
 {
@@ -21,6 +25,7 @@ class ReservationsController extends Controller
         return view("reservations.index", [
             'reservations' => Reservations::paginate(10),
             'users' => User::all(),
+            'types' => Types::all(),
             'treatments' => Treatments::all(),
             'employees' => Employees::all()
         ]);
@@ -33,6 +38,7 @@ class ReservationsController extends Controller
     {
         return view("reservations.create", [
             'users' => User::all(),
+            'types' => Types::all(),
             'treatments' => Treatments::all(),
             'employees' => Employees::all()
         ]);
@@ -56,6 +62,7 @@ class ReservationsController extends Controller
         return view("reservations.show", [
             'reservation' => $reservations,
             'users' => User::all(),
+            'types' => Types::all(),
             'treatments' => Treatments::all(),
             'employees' => Employees::all()
         ]);
@@ -66,11 +73,15 @@ class ReservationsController extends Controller
      */
     public function edit(Reservations $reservations) : View
     {
+        $lastSelectedValue = $reservations->status;
+
         return view('reservations.edit', [
             'reservation' => $reservations,
             'users' => User::all(),
+            'types' => Types::all(),
             'treatments' => Treatments::all(),
-            'employees' => Employees::all()
+            'employees' => Employees::all(),
+            'lastSelectedValue' => $lastSelectedValue
         ]);
     }
 
@@ -81,6 +92,13 @@ class ReservationsController extends Controller
     {
         $reservations->fill($request->validated());
         $reservations->save();
+
+        $user = Auth::user();
+
+    if ($user->role === UserRole::USER) {
+        return redirect()->route('reservations.session')->with('status', 'Reservation updated!');
+    }
+
         return redirect(route('reservations.index'))->with('status', 'Reservation updated!');
     }
 
@@ -92,5 +110,29 @@ class ReservationsController extends Controller
         //$reservations = Treatments::find($treatments);
         $reservations->delete();
         return redirect(route('reservations.index'))->with('status', 'Reservation deleted!');
+    }
+
+    public function getTreatmentsByType($typeId)
+    {
+        $treatments = Treatments::where('typeId', $typeId)->get();
+
+        return response()->json($treatments);
+    }
+
+    public function getEmployeesByType($typeId)
+    {
+        $type = Types::findOrFail($typeId);
+        $specializationId = $type->specializationId;
+
+        $employees = Employees::where('specializationId', $specializationId)->get();
+
+        return response()->json($employees);
+    }
+
+    public function showReservations()
+    {
+        $reservations = Reservations::where('userId', Auth::id())->get();
+
+        return view('reservations.session', compact('reservations'));
     }
 }

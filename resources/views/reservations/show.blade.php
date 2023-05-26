@@ -20,6 +20,17 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="typeId" class="col-md-4 col-form-label text-md-end">Type ID</label>
+                            <div class="col-md-6">
+                                <select id="typeId" class="form-control" name="typeId" disabled>
+                                    @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="treatmentId" class="col-md-4 col-form-label text-md-end">Treatment</label>
                             <div class="col-md-6">
                                 <select id="treatmentId" class="form-control" name="treatmentId" disabled>
@@ -47,19 +58,25 @@
                                 <input id="datetime" type="datetime-local" class="form-control" name="duration" value="{{ $reservation->datetime }}" disabled>
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <label for="status" class="col-md-4 col-form-label text-md-end">Status</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="status" name="status" selected disabled>
-                                    <option value="confirmed">Confirmed</option>
-                                    <option value="cancelled">Cancelled</option>
+                                <select class="form-control" id="status" name="status" disabled>
+                                    <option value="confirmed" <?php if ($reservation->status === 'confirmed') echo 'selected'; ?>>Confirmed</option>
+                                    <option value="cancelled" <?php if ($reservation->status === 'cancelled') echo 'selected'; ?>>Cancelled</option>
                                 </select>
                             </div>
                         </div>
-                        <a class="nav-link" href="{{ route('reservations.index') }}" style="text-align:center">
-                            <button class="btn btn-success btn-sm">Return to Reservations</button>
-                        </a>
+                        @can('isAdmin')
+                            <a class="nav-link" href="{{ route('reservations.index') }}" style="text-align:center">
+                                <button class="btn btn-success btn-sm">Return to Reservations</button>
+                            </a>
+                        @endcan
+                        @can('isUser')
+                            <a class="nav-link" href="{{ route('reservations.session') }}" style="text-align:center">
+                                <button class="btn btn-success btn-sm">Return to Reservations</button>
+                            </a>
+                        @endcan
                 </div>
             </div>
         </div>

@@ -15,11 +15,13 @@
         <div class="col-10">
             <h1>Employees List</h1>
         </div>
-        <div class="col-2">
-            <a class="float-right" href=" {{ route('employees.create') }} ">
-                <button type="button" class="btn btn-primary">Create new Employee</button>
-            </a>
-        </div>
+        @can('isAdmin')
+            <div class="col-2">
+                <a class="float-right" href=" {{ route('employees.create') }} ">
+                    <button type="button" class="btn btn-primary">Create new Employee</button>
+                </a>
+            </div>
+        @endcan
     </div>
     <br>
     <div class="row">
@@ -32,7 +34,9 @@
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Specialization</th>
-                <th scope="col">Actions</th>
+                @can('isAdmin')
+                    <th scope="col">Actions</th>
+                @endcan
                 </tr>
             </thead>
             <tbody>
@@ -44,17 +48,19 @@
                         <td>{{$employee->email}}</td>
                         <td>{{$employee->phone}}</td>
                         <td>{{$employee->specializations->name ?? 'None' }}</td>
-                        <td>
-                            <a href="{{ route('employees.show', $employee->id) }}">
-                                <button class="btn btn-success btn-sm">Show</button>
-                            </a>
-                            <a href="{{ route('employees.edit', $employee->id) }}">
-                                <button class="btn btn-info btn-sm">Edit</button>
-                            </a>
-                            <a href="{{ route('employees.destroy', $employee->id) }}">
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </a>
-                        </td>
+                        @can('isAdmin')
+                            <td>
+                                <a href="{{ route('employees.show', $employee->id) }}">
+                                    <button class="btn btn-success btn-sm">Show</button>
+                                </a>
+                                <a href="{{ route('employees.edit', $employee->id) }}">
+                                    <button class="btn btn-info btn-sm">Edit</button>
+                                </a>
+                                <a href="{{ route('employees.destroy', $employee->id) }}">
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </a>
+                            </td>
+                        @endcan
                     </tr>
                 @endforeach
             </tbody>

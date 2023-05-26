@@ -16,7 +16,7 @@
             <h1>Types of Treatments List</h1>
         </div>
         <div class="col-6">
-            <a class="float-right" href=" {{ route('types.create') }} ">
+            <a style="float: right" href=" {{ route('types.create') }} ">
                 <button type="button" class="btn btn-primary">Create new Type of Treatment</button>
             </a>
         </div>
@@ -28,6 +28,7 @@
                 <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
+                <th scope="col">Specialization</th>
                 <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <tr>
                         <th scope="row">{{$type->id}}</th>
                         <td>{{$type->name}}</td>
+                        <td>{{$type->specializations->name ?? 'None'}}</td>
                         <td>
                             <a href="{{ route('types.show', $type->id) }}">
                                 <button class="btn btn-success btn-sm">Show</button>

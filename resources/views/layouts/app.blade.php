@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -35,15 +36,26 @@
                                 <a class="nav-link" href="{{ route('users.index') }}">Users List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('employees.index') }}">Employees List</a>
+                                <a class="nav-link" href="{{ route('specializations.index') }}">Specializations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('types.index') }}">Types of Treatments</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('treatments.index') }}">Treatments</a>
                             </li>
                         @endcan
                         <li class="nav-item">
+                                <a class="nav-link" href="{{ route('employees.index') }}">Employees List</a>
+                            </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
                         </li>
+                        @can('isUser')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reservations.session') }}">My Reservations</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

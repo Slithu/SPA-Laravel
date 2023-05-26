@@ -10,7 +10,7 @@
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5 bg-light" style="background-image: url('{{ asset('/images/bg2.png')}}'); background-repeat: no-repeat; background-size: cover;">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -31,7 +31,7 @@
                           <small>Duration: {{ $treatment->duration }}</small>
                         </div>
                         <small class="text-muted">Price: {{ $treatment->price }} PLN</small>
-                      </div>
+                    </div>
                 </div>
             </div>
             </div>
