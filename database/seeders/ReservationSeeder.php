@@ -18,8 +18,9 @@ class ReservationSeeder extends Seeder
     {
         DB::table('reservations')->insert([
             'userId' => '4',
+            'typeId' => '1',
             'treatmentId' => '1',
-            'employeeId' => '10',
+            'employeeId' => '11',
             'datetime' => '2023-10-10 10:00:00',
             'status' => 'confirmed'
         ]);

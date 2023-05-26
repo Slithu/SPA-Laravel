@@ -17,12 +17,12 @@ class TreatmentSeeder extends Seeder
     public function run(): void
     {
         DB::table('treatments')->insert([
-            'image_path' => 'treatments/aupQzxzcksGCzPk2jJmeg8YTv30IvYyGQoZYEXCG.jpg',
+            'image_path' => 'treatments/hqRzM1olwpFFwqvfBbl7b8YZoFQLpZoo1HqDgp75.jpg',
             'name' => 'Relaxing Massage',
             'typeId' => '1',
-            'description' => 'Relaxing massage draws a lot from classical massage techniques. There is excitement for body and spirit. Massaging the properties and the neck makes it possible to fully relax, forget about everyday life for a while and gain the energy needed to function properly.',
+            'description' => 'Relaxing massage draws a lot from classical massage techniques. It is a real pleasure for body and soul. Massaging your back and neck allows you to fully relax, forget about everyday life for a while and gain energy so necessary for everyday functioning.',
             'duration' => '00:50:00',
-            'price' => '200.00'
+            'price' => '220.00'
         ]);
     }
 }

@@ -17,15 +17,18 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('types')->insert([
-            'name' => 'SPA Massage'
+            'name' => 'SPA Massage',
+            'specializationId' => '1'
         ]);
 
         DB::table('types')->insert([
-            'name' => 'Facial Treatments'
+            'name' => 'Facial Treatments',
+            'specializationId' => '2'
         ]);
 
         DB::table('types')->insert([
-            'name' => 'Body Treatments'
+            'name' => 'Body Treatments',
+            'specializationId' => '3'
         ]);
     }
 }

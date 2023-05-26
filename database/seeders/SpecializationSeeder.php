@@ -23,5 +23,9 @@ class SpecializationSeeder extends Seeder
         DB::table('specializations')->insert([
             'name' => 'Masseur/Physiotherapist'
         ]);
+
+        DB::table('specializations')->insert([
+            'name' => 'Body Care Employee'
+        ]);
     }
 }
