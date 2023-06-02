@@ -28,9 +28,9 @@
             <div class="col-md-3 text-center">
                 <label for="filtert">Filter by Employee Specialization:</label>
                 <select id="filtert" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('employees.index') }}" selected>All Employees</option>
+                    <option value="{{ route('employees.index') }}">All Employees</option>
                     <option value="{{ route('employees.GetMasseurSpecializations') }}">Masseur/Physiotherapist</option>
-                    <option value="{{ route('employees.GetBeauticianSpecializations') }}">Beautician</option>
+                    <option value="{{ route('employees.GetBeauticianSpecializations') }}" selected>Beautician</option>
                     <option value="{{ route('employees.GetBodyCareEmployeeSpecializations') }}">Body Care Employee</option>
                 </select>
             </div>
@@ -53,7 +53,7 @@
                             <h4>ID: {{ $employee->id }}</h4>
                         @endcan
                         <h4>{{ $employee->name }} {{ $employee->surname }}</h4>
-                        <h5 class="lead text-muted"><i>{{ $employee->specializations->name ?? 'None' }}</i></h5><br>
+                        <h5 class="lead text-muted"><i>{{ $employee->specializationId }}</i></h5><br>
                         <span class="card-text fw-bold">Phone Number: {{ $employee->phone }}</span>
                         <p class="card-text fw-bold">Email: {{ $employee->email}}</p>
                         <div class="d-flex justify-content-between align-items-center">
@@ -76,8 +76,10 @@
           </div>
         </div>
       </div>
-    <div class="position-fixed bottom-0 start-50 translate-middle-x">
+    {{--
+    <div class="position-absolute bottom-0 start-50 translate-middle-x">
         {{$employees->links()}}
     </div>
+    --}}
 </div>
 @endsection

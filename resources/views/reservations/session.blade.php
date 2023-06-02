@@ -63,5 +63,8 @@
         </table>
     </div>
     @endif
+    <div class="position-absolute bottom-0 start-50 translate-middle-x">
+        {{$reservations->links()}}
+    </div>
 </div>
 @endsection

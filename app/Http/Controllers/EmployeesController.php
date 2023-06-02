@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Requests\StoreEmployeeRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
@@ -17,7 +19,7 @@ class EmployeesController extends Controller
     public function index() : View
     {
         return view("employees.index", [
-            'employees' => Employees::paginate(10),
+            'employees' => Employees::paginate(6),
             'specializations' => Specializations::all()
         ]);
     }
@@ -37,8 +39,11 @@ class EmployeesController extends Controller
      */
     public function store(StoreEmployeeRequest $request) : RedirectResponse
     {
-        $employee = new Employees($request->validated());
-        $employee->save();
+        $employees = new Employees($request->validated());
+        if ($request->hasFile('image')) {
+            $employees->image_path = Storage::disk('public')->put('employees', $request->file('image'));
+        }
+        $employees->save();
         return redirect(route('employees.index'))->with('status', 'Employee stored!');
     }
 
@@ -70,6 +75,9 @@ class EmployeesController extends Controller
     public function update(StoreEmployeeRequest $request, Employees $employees) : RedirectResponse
     {
         $employees->fill($request->validated());
+        if ($request->hasFile('image')) {
+            $employees->image_path = Storage::disk('public')->put('employees', $request->file('image'));
+        }
         $employees->save();
         return redirect(route('employees.index'))->with('status', 'Employee updated!');
     }
@@ -82,5 +90,29 @@ class EmployeesController extends Controller
         //$employee = Employees::find($employees);
         $employees->delete();
         return redirect(route('employees.index'))->with('status', 'Employee deleted!');
+    }
+
+    public function GetMasseurSpecializations() : View
+    {
+        $results = DB::select('CALL GetMasseurSpecializations()');
+        return view('employees.GetMasseurSpecializations',[
+            'employees' => $results
+           ]);
+    }
+
+    public function GetBeauticianSpecializations() : View
+    {
+        $results = DB::select('CALL GetBeauticianSpecializations()');
+        return view('employees.GetBeauticianSpecializations',[
+            'employees' => $results
+           ]);
+    }
+
+    public function GetBodyCareEmployeeSpecializations() : View
+    {
+        $results = DB::select('CALL GetBodyCareEmployeeSpecializations()');
+        return view('employees.GetBodyCareEmployeeSpecializations',[
+            'employees' => $results
+           ]);
     }
 }

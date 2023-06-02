@@ -27,6 +27,7 @@ class StoreEmployeeRequest extends FormRequest
             'email' => 'required|email:rfc,dns',
             'phone' => 'required|numeric|digits:9',
             'specializationId' => 'required',
+            'image' => 'nullable|image'
         ];
     }
 }

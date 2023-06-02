@@ -7,14 +7,16 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h4>{{ __('You are logged in!') }}</h4><br>
+
+                    <img src="images/home.jpg" alt="home" style="margin-bottom: 4%; border-radius: 8px;">
                 </div>
             </div>
         </div>

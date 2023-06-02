@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTreatmentRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class TreatmentsController extends Controller

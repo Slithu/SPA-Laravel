@@ -14,20 +14,20 @@
     <div class="container">
         <div class="row justify-content-center mb-4 fw-bold">
             <div class="col-md-3 text-center">
-                <label for="filtert">Filter by Treatment Type:</label>
-                <select id="filtert" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('welcome') }}" selected>All Treatments</option>
-                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}">SPA Massages</option>
+                <label for="filter">Filter by Treatment Type:</label>
+                <select id="filter" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
+                    <option value="{{ route('welcome') }}">All Treatments</option>
+                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}" selected>SPA Massages</option>
                     <option value="{{ route('treatments.GetFacialTreatments') }}">Facial Treatments</option>
                     <option value="{{ route('treatments.GetBodyTreatments') }}">Body Treatments</option>
                 </select>
             </div>
             <div class="col-md-3 text-center">
-                <label for="filterp">Filter by Price:</label>
-                <select id="filterp" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
+                <label for="filter">Filter by Price:</label>
+                <select id="filter" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
                     <option value="{{ route('welcome') }}">All Prices</option>
-                    <option value="{{ route('treatments.GetTreatmentsAsc') }}">Low to High</option>
-                    <option value="{{ route('treatments.GetTreatmentsDesc') }}">High to Low</option>
+                    <option value="{{ route('treatments.GetSpaMassagesTreatmentsAsc') }}">Low to High</option>
+                    <option value="{{ route('treatments.GetSpaMassagesTreatmentsDesc') }}" selected>High to Low</option>
                 </select>
             </div>
         </div>
@@ -44,14 +44,13 @@
                 @endif
                 <div class="card-body">
                     <h4>{{ $treatment->name }}</h4>
-                    <h5 class="lead text-muted"><i>{{ $treatment->types->name }}</i></h5>
+                    <h5 class="lead text-muted"><i>{{ $treatment->typeId }}</i></h5>
                     <p class="card-text">{{ $treatment->description }}</p>
                     <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">Duration: {{ $treatment->duration }}</small>
+                        <div class="text-muted">
+                          <small>Duration: {{ $treatment->duration }}</small>
+                        </div>
                         <small class="text-muted">Price: {{ $treatment->price }} PLN</small>
-                        <a href="{{ route('reservations.create2', ['treatmentId' => $treatment->id, 'typeId' => $treatment->typeId]) }}">
-                            <button type="button" class="btn btn-success btn-sm">Reserve</button>
-                        </a>
                     </div>
                 </div>
             </div>

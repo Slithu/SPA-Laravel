@@ -16,6 +16,7 @@ class Employees extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'image_path',
         'name',
         'surname',
         'email',
