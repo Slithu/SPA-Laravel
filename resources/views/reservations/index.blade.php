@@ -13,13 +13,20 @@
     </div>
     <div class="row">
         <div class="col-10">
-            <h1>Reservations List</h1>
+            @can('isAdmin')
+                <h1>Reservations List</h1>
+            @endcan
+            @can('isUser')
+                <h1>Reserve Your Treatment</h1>
+            @endcan
         </div>
-        <div class="col-2">
-            <a class="float-right" href=" {{ route('reservations.create') }} ">
-                <button type="button" class="btn btn-primary">Create new Reservation</button>
-            </a>
-        </div>
+        @can('isUser')
+            <div class="col-2">
+                <a class="float-right" href=" {{ route('reservations.create') }} ">
+                    <button type="button" class="btn btn-primary">Create new Reservation</button>
+                </a>
+            </div>
+        @endcan
         @can('isUser')
             <h4 style="text-align: center; margin-top: 5%">To reserve a SPA treatment, press the Create new Reservation button and enter the details of the treatment. You can see your reserved treatments in the My Reservations tab</h4>
         @endcan
@@ -73,8 +80,10 @@
         </table>
     </div>
     @endcan
-    <div class="position-absolute bottom-0 start-50 translate-middle-x">
-        {{$reservations->links()}}
-    </div>
+    @can('isAdmin')
+        <div class="position-absolute bottom-0 start-50 translate-middle-x">
+            {{$reservations->links()}}
+        </div>
+    @endcan
 </div>
 @endsection

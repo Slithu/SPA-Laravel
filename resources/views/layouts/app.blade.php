@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-image: url('{{ asset('/images/resbg2.png')}}')">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -49,7 +49,12 @@
                                 <a class="nav-link" href="{{ route('employees.index') }}">Employees List</a>
                             </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
+                            @can('isAdmin')
+                                <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
+                            @endcan
+                            @can('isUser')
+                                <a class="nav-link" href="{{ route('reservations.index') }}">Reserve Treatment</a>
+                            @endcan
                         </li>
                         @can('isUser')
                             <li class="nav-item">
@@ -80,6 +85,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -23,21 +23,21 @@
             </div>
         @endcan
     </div><br><br>
-    <div class="container">
-        <div class="row justify-content-left mb-4 fw-bold">
-            <div class="col-md-3 text-center">
-                <label for="filtert">Filter by Employee Specialization:</label>
-                <select id="filtert" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('employees.index') }}">All Employees</option>
-                    <option value="{{ route('employees.GetMasseurSpecializations') }}" selected>Masseur/Physiotherapist</option>
-                    <option value="{{ route('employees.GetBeauticianSpecializations') }}">Beautician</option>
-                    <option value="{{ route('employees.GetBodyCareEmployeeSpecializations') }}">Body Care Employee</option>
-                </select>
+    <div class="album py-5 bg-light" style="background-image: url('{{ asset('/images/bg2.png')}}'); background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="row justify-content-center mb-4 fw-bold">
+                <div class="col-md-3 text-center">
+                    <label for="filtert">Filter by Employee Specialization:</label>
+                    <select id="filtert" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
+                        <option value="{{ route('employees.index') }}" class="text-center">All Employees</option>
+                        <option value="{{ route('employees.GetMasseurSpecializations') }}" class="text-center" selected>Masseur/Physiotherapist</option>
+                        <option value="{{ route('employees.GetBeauticianSpecializations') }}" class="text-center">Beautician</option>
+                        <option value="{{ route('employees.GetBodyCareEmployeeSpecializations') }}" class="text-center">Body Care Employee</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="album py-5 bg-light">
+        <br>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="employees">
             @foreach ($employees as $employee)

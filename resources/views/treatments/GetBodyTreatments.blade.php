@@ -16,18 +16,18 @@
             <div class="col-md-3 text-center">
                 <label for="filtert">Filter by Treatment Type:</label>
                 <select id="filtert" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('welcome') }}">All Treatments</option>
-                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}">SPA Massages</option>
-                    <option value="{{ route('treatments.GetFacialTreatments') }}">Facial Treatments</option>
-                    <option value="{{ route('treatments.GetBodyTreatments') }}" selected>Body Treatments</option>
+                    <option value="{{ route('welcome') }}" class="text-center">All Treatments</option>
+                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}" class="text-center">SPA Massages</option>
+                    <option value="{{ route('treatments.GetFacialTreatments') }}" class="text-center">Facial Treatments</option>
+                    <option value="{{ route('treatments.GetBodyTreatments') }}" class="text-center" selected>Body Treatments</option>
                 </select>
             </div>
             <div class="col-md-3 text-center">
                 <label for="filterp">Filter by Price:</label>
                 <select id="filterp" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('treatments.GetBodyTreatments') }}">All Prices</option>
-                    <option value="{{ route('treatments.GetBodyTreatmentsAsc') }}">Low to High</option>
-                    <option value="{{ route('treatments.GetBodyTreatmentsDesc') }}">High to Low</option>
+                    <option value="{{ route('treatments.GetBodyTreatments') }}" class="text-center">All Prices</option>
+                    <option value="{{ route('treatments.GetBodyTreatmentsAsc') }}" class="text-center">Low to High</option>
+                    <option value="{{ route('treatments.GetBodyTreatmentsDesc') }}" class="text-center">High to Low</option>
                 </select>
             </div>
         </div>

@@ -16,18 +16,18 @@
             <div class="col-md-3 text-center">
                 <label for="filter">Filter by Treatment Type:</label>
                 <select id="filter" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('welcome') }}">All Treatments</option>
-                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}">SPA Massages</option>
-                    <option value="{{ route('treatments.GetFacialTreatments') }}" selected>Facial Treatments</option>
-                    <option value="{{ route('treatments.GetBodyTreatments') }}">Body Treatments</option>
+                    <option value="{{ route('welcome') }}" class="text-center">All Treatments</option>
+                    <option value="{{ route('treatments.GetSpaMassagesTreatments') }}" class="text-center">SPA Massages</option>
+                    <option value="{{ route('treatments.GetFacialTreatments') }}" class="text-center" selected>Facial Treatments</option>
+                    <option value="{{ route('treatments.GetBodyTreatments') }}" class="text-center">Body Treatments</option>
                 </select>
             </div>
             <div class="col-md-3 text-center">
                 <label for="filter">Filter by Price:</label>
                 <select id="filter" class="form-control" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                    <option value="{{ route('welcome') }}">All Prices</option>
-                    <option value="{{ route('treatments.GetFacialTreatmentsAsc') }}">Low to High</option>
-                    <option value="{{ route('treatments.GetFacialTreatmentsDesc') }}" selected>High to Low</option>
+                    <option value="{{ route('welcome') }}" class="text-center">All Prices</option>
+                    <option value="{{ route('treatments.GetFacialTreatmentsAsc') }}" class="text-center">Low to High</option>
+                    <option value="{{ route('treatments.GetFacialTreatmentsDesc') }}" class="text-center" selected>High to Low</option>
                 </select>
             </div>
         </div>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Creating A New Reservation</div>
+                <div class="card-header text-center">Creating A New Reservation</div>
 
                 <div class="card-body" style="background-image: url('{{ asset('/images/resbg2.png')}}')">
                     <form method="POST" action="{{ route('reservations.store') }}">

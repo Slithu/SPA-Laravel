@@ -13,11 +13,11 @@
     </div>
     @if ($reservations->isEmpty())
     <h1>Your Reservations</h1><br><br>
-        <h4 style="text-align: center">You don't have any reservations yet. If you want to reserve a treatment, go to the Reservations tab</h4>
+        <h4 style="text-align: center">You don't have any reservations yet. If you want to reserve a treatment, go to the Reserve Treatment tab</h4>
     @else
     <h1>Your Reservations</h1>
     <br>
-    <h6 style="text-align: center">You can edit your reservations by clicking the edit button and changing the reservation details. If you want to cancel the reservation, click the edit button and change the status to "Cancelled"</h6>
+    <h6 style="text-align: center">You can edit your reservations by clicking the edit button to cancel the reservation, click the edit button and change the status to "Cancelled"</h6>
     <br><br>
     <div class="row">
         <table class="table table-striped table-hover">

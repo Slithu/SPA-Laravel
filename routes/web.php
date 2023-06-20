@@ -29,8 +29,12 @@ use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('/users/list', [UsersController::class, 'index'])->name('users.index')->middleware('auth')->middleware('can:isAdmin');
+Route::get('/users/list', [UsersController::class, 'index'])
+    ->name('users.index')
+    ->middleware(['auth', 'can:isAdmin']);
 Route::get("users/{id}/delete", [UsersController::class, 'destroy'])->name('users.destroy')->middleware('auth')->middleware('can:isAdmin');
+Route::post('/users/{user}', [UsersController::class, 'update'])->name('users.update')->middleware('auth');
+Route::get('/users/edit/{user}', [UsersController::class, 'edit'])->name('users.edit')->middleware('auth');
 //Route::delete('/users/{id}', [UsersController::class, 'destroy'])->middleware('auth');
 
 Route::get('/employees', [EmployeesController::class, 'index'])->name('employees.index');
@@ -94,6 +98,8 @@ Route::get('/GetSpaMassagesTreatmentsDesc', [WelcomeController::class, 'GetSpaMa
 Route::get('/GetMasseurSpecializations', [EmployeesController::class, 'GetMasseurSpecializations'])->name('employees.GetMasseurSpecializations');
 Route::get('/GetBeauticianSpecializations', [EmployeesController::class, 'GetBeauticianSpecializations'])->name('employees.GetBeauticianSpecializations');
 Route::get('/GetBodyCareEmployeeSpecializations', [EmployeesController::class, 'GetBodyCareEmployeeSpecializations'])->name('employees.GetBodyCareEmployeeSpecializations');
+
+Route::get('/profile', [UsersController::class, 'profile'])->name('profile.show')->middleware('auth');
 
 Auth::routes();
 

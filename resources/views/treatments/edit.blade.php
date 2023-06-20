@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editing A Treatment</div>
+                <div class="card-header text-center">Editing A Treatment</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('treatments.update', $treatment->id) }}" enctype="multipart/form-data">

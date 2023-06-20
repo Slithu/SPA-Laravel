@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">Creating A New Treatment</div>
+                <div class="card-header text-center">Editing Profile</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('treatments.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('users.update', $user->id) }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" maxlength="255" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" maxlength="255" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -26,17 +26,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="typeId" class="col-md-4 col-form-label text-md-end">Type of Treatment</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-end">Surname</label>
 
                             <div class="col-md-6">
-                                <select id="typeId" class="form-control @error('typeId') is-invalid @enderror" name="typeId" required>
-                                    <option value="">-</option>
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input id="surname" maxlength="255" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $user->surname }}" required autocomplete="surname" autofocus>
 
-                                @error('typeId')
+                                @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -45,12 +40,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end">Description</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{ old('description') }}</textarea>
+                                <input id="email" maxlength="255" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
 
-                                @error('description')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -59,12 +54,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="duration" class="col-md-4 col-form-label text-md-end">Duration</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="duration" type="time" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ old('duration') }}" required autocomplete="duration">
+                                <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone }}" required autocomplete="phone">
 
-                                @error('duration')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -73,12 +68,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">Price</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{__('Password')}}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" step="0.01" min="0" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('price')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -87,16 +82,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="image" class="col-md-4 col-form-label text-md-end">Image</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
-
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 

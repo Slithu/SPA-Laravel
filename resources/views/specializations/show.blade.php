@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Show Specialization</div>
+                <div class="card-header text-center">Show Specialization</div>
 
                 <div class="card-body">
                         <div class="row mb-3">
