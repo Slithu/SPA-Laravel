@@ -21,7 +21,7 @@ class SpecializationSeeder extends Seeder
         ]);
 
         DB::table('specializations')->insert([
-            'name' => 'Beautican'
+            'name' => 'Beautician'
         ]);
 
         DB::table('specializations')->insert([

@@ -17,55 +17,55 @@ class ReservationSeeder extends Seeder
     public function run(): void
     {
         DB::table('reservations')->insert([
-            'userId' => '7',
+            'userId' => '2',
             'typeId' => '1',
-            'treatmentId' => '51',
-            'employeeId' => '11',
+            'treatmentId' => '1',
+            'employeeId' => '1',
             'datetime' => '2023-06-23 11:00:00',
             'status' => 'confirmed'
         ]);
 
         DB::table('reservations')->insert([
-            'userId' => '7',
+            'userId' => '2',
             'typeId' => '2',
-            'treatmentId' => '60',
-            'employeeId' => '12',
+            'treatmentId' => '7',
+            'employeeId' => '2',
             'datetime' => '2023-06-24 11:00:00',
             'status' => 'confirmed'
         ]);
 
         DB::table('reservations')->insert([
-            'userId' => '7',
+            'userId' => '2',
             'typeId' => '3',
-            'treatmentId' => '66',
-            'employeeId' => '13',
+            'treatmentId' => '13',
+            'employeeId' => '3',
             'datetime' => '2023-07-03 11:00:00',
             'status' => 'confirmed'
         ]);
 
         DB::table('reservations')->insert([
-            'userId' => '12',
+            'userId' => '3',
             'typeId' => '1',
-            'treatmentId' => '52',
-            'employeeId' => '16',
+            'treatmentId' => '2',
+            'employeeId' => '6',
             'datetime' => '2023-06-23 11:00:00',
             'status' => 'confirmed'
         ]);
 
         DB::table('reservations')->insert([
-            'userId' => '12',
+            'userId' => '3',
             'typeId' => '2',
-            'treatmentId' => '61',
-            'employeeId' => '15',
+            'treatmentId' => '8',
+            'employeeId' => '5',
             'datetime' => '2023-06-24 11:00:00',
             'status' => 'confirmed'
         ]);
 
         DB::table('reservations')->insert([
-            'userId' => '12',
+            'userId' => '3',
             'typeId' => '3',
-            'treatmentId' => '67',
-            'employeeId' => '14',
+            'treatmentId' => '14',
+            'employeeId' => '4',
             'datetime' => '2023-07-03 11:00:00',
             'status' => 'confirmed'
         ]);

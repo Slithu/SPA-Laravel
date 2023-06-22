@@ -2,8 +2,11 @@
 php -r "copy('.env.example', '.env');"
 call composer install
 call php artisan key:generate
+call php artisan config:cache
 call php artisan storage:link
 call php artisan migrate:fresh
 call php artisan db:seed
 start http://127.0.0.1:8000
 call php artisan serve
+call npm run dev
+

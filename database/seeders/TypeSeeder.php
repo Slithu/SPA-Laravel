@@ -17,7 +17,7 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('types')->insert([
-            'name' => 'SPA Massage',
+            'name' => 'SPA Massages',
             'specializationId' => '1'
         ]);
 
