@@ -50,9 +50,7 @@
                         <small class="text-muted">Duration: {{ $treatment->duration }}</small>
                         <small class="text-muted">Price: {{ $treatment->price }} PLN</small>
                         <a href="{{ route('reservations.create2', ['treatmentId' => $treatment->id, 'typeId' => $treatment->typeId]) }}">
-                        @can('isUser')
                             <button type="button" class="btn btn-success btn-sm">Reserve</button>
-                        @endcan
                         </a>
                     </div>
                 </div>

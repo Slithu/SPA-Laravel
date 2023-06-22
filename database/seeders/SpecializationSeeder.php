@@ -17,11 +17,11 @@ class SpecializationSeeder extends Seeder
     public function run(): void
     {
         DB::table('specializations')->insert([
-            'name' => 'Beautican'
+            'name' => 'Masseur/Physiotherapist'
         ]);
 
         DB::table('specializations')->insert([
-            'name' => 'Masseur/Physiotherapist'
+            'name' => 'Beautican'
         ]);
 
         DB::table('specializations')->insert([
