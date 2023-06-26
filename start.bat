@@ -7,7 +7,6 @@ call php artisan config:cache
 call php artisan storage:link
 call php artisan migrate:fresh
 call php artisan db:seed
-call npm run build
 start http://127.0.0.1:8000
 call php artisan serve
 
